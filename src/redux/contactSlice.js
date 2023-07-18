@@ -22,7 +22,7 @@ const contactSlice = createSlice({
   reducers: {
     addContact: {
       reducer(state, action) {
-        state.testItem.push(action.payload);
+        state.contactsArray.push(action.payload);
       },
       prepare(obj) {
         return {
@@ -33,10 +33,10 @@ const contactSlice = createSlice({
       },
     },
     deleteContact(state, action) {
-      const idx = state.testItem.findIndex(
+      const idx = state.contactsArray.findIndex(
         contact => contact.id === action.payload
       );
-      state.testItem.splice(idx, 1);
+      state.contactsArray.splice(idx, 1);
     },
   },
 });
