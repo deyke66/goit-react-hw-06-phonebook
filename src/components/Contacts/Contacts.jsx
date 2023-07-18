@@ -36,6 +36,6 @@ Contacts.propTypes = {
       number: PropTypes.string,
     })
   ),
-  filter: PropTypes.string,
+  filterTerm: PropTypes.string,
   onClick: PropTypes.func,
 };
