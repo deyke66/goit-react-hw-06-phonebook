@@ -10,6 +10,7 @@ export const App = () => {
   const dispatch = useDispatch();
   const contactsArray = useSelector(state => state.contacts);
   const filterTerm = useSelector(state => state.filter);
+  console.log(contactsArray.testItem);
 
   const handleSubmitForm = e => {
     e.preventDefault();
@@ -21,7 +22,7 @@ export const App = () => {
       number: contactNumber,
     };
 
-    if (contactsArray.contacts.some(i => i.name === contactName)) {
+    if (contactsArray.testItem.some(i => i.name === contactName)) {
       alert(`You alraeady have a ${contactName} in contacts`);
       return;
     }
@@ -53,7 +54,7 @@ export const App = () => {
       <h2>Contacts</h2>
       <Filter filter={filterTerm} onChange={filterValue} />
       <Contacts
-        contacts={contactsArray.contacts}
+        contacts={contactsArray.testItem}
         filterTerm={filterTerm}
         onClick={handleDeleteContact}
       />
