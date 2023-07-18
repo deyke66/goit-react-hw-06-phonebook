@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import style from './Contacts.module.css';
 
-export const Contacts = ({ contacts, filter, onClick }) => {
+export const Contacts = ({ contacts, filterTerm, onClick }) => {
   return (
     <ul className={style.contacts_list}>
       {contacts
-        .filter(i => i.name.includes(filter))
+        .filter(i => i.name.includes(filterTerm))
         .map(item => {
           const { name, id, number } = item;
           return (

@@ -54,7 +54,7 @@ export const App = () => {
       <Filter filter={filterTerm} onChange={filterValue} />
       <Contacts
         contacts={contactsArray.contacts}
-        filter={filterTerm}
+        filterTerm={filterTerm}
         onClick={handleDeleteContact}
       />
     </div>
