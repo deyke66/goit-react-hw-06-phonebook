@@ -5,10 +5,12 @@ import { Filter } from './Filter/Filter';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact, deleteContact } from 'redux/contactSlice';
+import { setFilterValue } from 'redux/filterSlice';
 
 export const App = () => {
   const dispatch = useDispatch();
   const contactsArray = useSelector(state => state.contacts);
+  const filterTerm = useSelector(state => state.filter);
   const [filter, setFilter] = useState('');
   console.log(contactsArray);
 
@@ -31,6 +33,7 @@ export const App = () => {
 
   const filterValue = e => {
     setFilter(e.target.value);
+    dispatch(setFilterValue(e.target.value));
   };
 
   const handleDeleteContact = e => {
@@ -55,7 +58,7 @@ export const App = () => {
       <Filter filter={filter} onChange={filterValue} />
       <Contacts
         contacts={contactsArray}
-        filter={filter}
+        filter={filterTerm}
         onClick={handleDeleteContact}
       />
     </div>

@@ -1,11 +1,11 @@
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-const { createSlice } = require('@reduxjs/toolkit');
+// import { persistReducer } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage';
+import { createSlice } from '@reduxjs/toolkit';
 
-const persistConfig = {
-  key: 'root',
-  storage,
-};
+// const persistConfig = {
+//   key: 'root',
+//   storage,
+// };
 
 const inititalContactState = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -36,9 +36,9 @@ const contactSlice = createSlice({
     },
   },
 });
-// const contactReducer = contactSlice.reducer;
-export const contactReducer = persistReducer(
-  persistConfig,
-  contactSlice.reducer
-);
+// export const contactReducer = persistReducer(
+//   persistConfig,
+//   contactSlice.reducer
+// );
+export const contactReducer = contactSlice.reducer;
 export const { addContact, deleteContact } = contactSlice.actions;
