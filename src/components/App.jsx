@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Phonebook } from './Phonebook/Phonebook';
 import { Contacts } from './Contacts/Contacts';
 import { Filter } from './Filter/Filter';
@@ -11,8 +10,6 @@ export const App = () => {
   const dispatch = useDispatch();
   const contactsArray = useSelector(state => state.contacts);
   const filterTerm = useSelector(state => state.filter);
-  const [filter, setFilter] = useState('');
-  console.log(contactsArray);
 
   const handleSubmitForm = e => {
     e.preventDefault();
@@ -24,7 +21,7 @@ export const App = () => {
       number: contactNumber,
     };
 
-    if (contactsArray.some(i => i.name === contactName)) {
+    if (contactsArray.contacts.some(i => i.name === contactName)) {
       alert(`You alraeady have a ${contactName} in contacts`);
       return;
     }
@@ -32,7 +29,6 @@ export const App = () => {
   };
 
   const filterValue = e => {
-    setFilter(e.target.value);
     dispatch(setFilterValue(e.target.value));
   };
 
@@ -55,9 +51,9 @@ export const App = () => {
       <Phonebook onSubmit={handleSubmitForm} />
 
       <h2>Contacts</h2>
-      <Filter filter={filter} onChange={filterValue} />
+      <Filter filter={filterTerm} onChange={filterValue} />
       <Contacts
-        contacts={contactsArray}
+        contacts={contactsArray.contacts}
         filter={filterTerm}
         onClick={handleDeleteContact}
       />

@@ -6,6 +6,7 @@ import {
   PURGE,
   REGISTER,
   REHYDRATE,
+  persistStore,
 } from 'redux-persist';
 import { filterReducer } from './filterSlice';
 import { contactReducer } from './contactSlice';
@@ -22,3 +23,5 @@ export const store = configureStore({
       },
     }),
 });
+
+export const persistor = persistStore(store);
